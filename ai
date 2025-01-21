@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Function for responding to user input
+ai_response() {
+  # Take input from the user
+  echo "You: "
+  read user_input
+  
+  # Convert input to lowercase to make the comparison case-insensitive
+  user_input=$(echo "$user_input" | tr '[:upper:]' '[:lower:]')
+  
+  # Respond based on user input
+  case $user_input in
+    "hello" | "hi")
+      echo "AI: Hello! How can I help you today?"
+      ;;
+    "how are you" | "how are you?")
+      echo "AI: I'm just a program, but I'm doing great! Thanks for asking."
+      ;;
+    "what is your name" | "who are you?")
+      echo "AI: I am your AI assistant."
+      ;;
+    "what can you do?" | "what are your capabilities?")
+      echo "AI: I can answer simple questions and help with various tasks. Try asking me about the weather, time, or math!"
+      ;;
+    "what is the time?" | "tell me the time")
+      echo "AI: The current time is $(date '+%H:%M:%S')."
+      ;;
+    "goodbye" | "bye")
+      echo "AI: Goodbye! Have a great day!"
+      exit 0
+      ;;
+    *)
+      echo "AI: I'm sorry, I didn't understand that. Can you ask something else?"
+      ;;
+  esac
+}
+
+# Main loop to interact with the user
+while true; do
+  ai_response
+done
