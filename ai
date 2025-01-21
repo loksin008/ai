@@ -1,42 +1,44 @@
 #!/bin/bash
 
-# Function for responding to user input
+# Function for responding to user input based on menu selection
 ai_response() {
-  # Take input from the user
-  echo "You: "
-  read user_input
-  
-  # Convert input to lowercase to make the comparison case-insensitive
-  user_input=$(echo "$user_input" | tr '[:upper:]' '[:lower:]')
-  
-  # Respond based on user input
-  case $user_input in
-    "hello" | "hi")
+  echo "Please select an option:"
+  echo "1. Greet me"
+  echo "2. Ask how I'm doing"
+  echo "3. Ask my name"
+  echo "4. Ask about my capabilities"
+  echo "5. Get the current time"
+  echo "6. Exit"
+
+  read -p "Enter your choice (1-6): " option
+
+  case $option in
+    1)
       echo "AI: Hello! How can I help you today?"
       ;;
-    "how are you" | "how are you?")
+    2)
       echo "AI: I'm just a program, but I'm doing great! Thanks for asking."
       ;;
-    "what is your name" | "who are you?")
+    3)
       echo "AI: I am your AI assistant."
       ;;
-    "what can you do?" | "what are your capabilities?")
+    4)
       echo "AI: I can answer simple questions and help with various tasks. Try asking me about the weather, time, or math!"
       ;;
-    "what is the time?" | "tell me the time")
+    5)
       echo "AI: The current time is $(date '+%H:%M:%S')."
       ;;
-    "goodbye" | "bye")
+    6)
       echo "AI: Goodbye! Have a great day!"
       exit 0
       ;;
     *)
-      echo "AI: I'm sorry, I didn't understand that. Can you ask something else?"
+      echo "AI: Invalid option. Please choose a valid number between 1 and 6."
       ;;
   esac
 }
 
-# Main loop to interact with the user
+# Main loop to show the menu and interact with the user
 while true; do
   ai_response
 done
